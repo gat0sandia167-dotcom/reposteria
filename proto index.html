@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enamórate Repostería Artesanal | Hechos con amor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Great Vibes (Script para Enamórate), Cormorant Garamond (Serif elegante), Plus Jakarta Sans (Limpia para lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            DEFAULT: '#FDFBF7',
+                            soft: '#F9F5EB',
+                            dark: '#F1EAE0'
+                        },
+                        burgundy: {
+                            DEFAULT: '#7B112C',
+                            light: '#9A1B3B',
+                            dark: '#580A1E'
+                        },
+                        blush: {
+                            light: '#FCEEF2',
+                            DEFAULT: '#F4A2B8',
+                            dark: '#E57F9B'
+                        },
+                        olive: {
+                            light: '#EBF0E4',
+                            DEFAULT: '#6B7048',
+                            dark: '#525636'
+                        }
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #3D262A;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Sutil textura y detalles de desplazamiento */
+        .logo-shadow {
+            box-shadow: 0 12px 35px -8px rgba(123, 17, 44, 0.12);
+        }
+        .card-hover {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(123, 17, 44, 0.10);
+        }
+        /* Animación suave para el modal */
+        .modal-enter {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blush-light selection:text-burgundy overflow-x-hidden">
+
+    <!-- BARRA SUPERIOR DE ANUNCIO ESPIRITUAL -->
+    <div class="bg-burgundy text-cream text-xs sm:text-sm py-2 px-4 text-center font-light tracking-wide">
+        <span class="inline-flex items-center gap-1.5">
+            <i class="ph-fill ph-sparkle text-blush"></i>
+            "Todo lo que hagan, háganlo con amor." — Pedidos con 24h de anticipación en toda la ciudad
+            <i class="ph-fill ph-heart text-blush"></i>
+        </span>
+    </div>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-blush/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand / Mini Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-cream-soft border-2 border-blush flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                    <!-- Mini Emblema SVG Corazón y Batidor -->
+                    <svg viewBox="0 0 100 100" class="w-9 h-9">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#F4A2B8" stroke-width="2"/>
+                        <path d="M50 32 C35 12, 15 30, 50 56 C85 30, 65 12, 50 32 Z" fill="none" stroke="#7B112C" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M50 38 C43 28, 33 36, 50 49 C67 36, 57 28, 50 38 Z" fill="#F4A2B8"/>
+                        <!-- Mini Batidor -->
+                        <path d="M46 82 L54 68 M50 84 L50 65" stroke="#7B112C" stroke-width="3" stroke-linecap="round"/>
+                        <ellipse cx="50" cy="64" rx="5" ry="9" fill="none" stroke="#7B112C" stroke-width="2.2"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-script text-3xl text-burgundy block leading-none">Enamórate</span>
+                    <span class="text-[10px] tracking-[0.22em] uppercase text-olive font-semibold block mt-0.5">Repostería Artesanal</span>
+                </div>
+            </a>
+
+            <!-- Enlaces Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
+                <a href="#inicio" class="hover:text-burgundy transition">Inicio</a>
+                <a href="#catalogo" class="hover:text-burgundy transition">Catálogo de Pasteles</a>
+                <a href="#como-pedir" class="hover:text-burgundy transition">Cómo Pedir</a>
+                <a href="#contacto" class="hover:text-burgundy transition">Contacto</a>
+            </nav>
+
+            <!-- Botón Rápido WhatsApp -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/573103522093?text=Hola%20Enam%C3%B3rate%20Reposter%C3%ADa%20Artesanal%20%F0%9F%92%95%2C%20quisiera%20cotizar%20un%20pastel." 
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 bg-olive hover:bg-olive-dark text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-sm transition transform active:scale-95">
+                    <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                    <span class="hidden sm:inline">310 352 2093</span>
+                    <span class="sm:hidden">Pedir</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION (ENCABEZADO) -->
+    <section id="inicio" class="relative py-12 sm:py-20 px-4 overflow-hidden">
+        <!-- Elementos decorativos de fondo minimalistas -->
+        <div class="absolute -top-24 -left-24 w-80 h-80 bg-blush-light rounded-full blur-3xl opacity-70 pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-24 w-80 h-80 bg-olive-light rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <!-- LOGOTIPO CENTRAL (Soporta 'image_720616.png' o recreación vectorial idéntica de alta nitidez) -->
+            <div class="mx-auto mb-8 w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-cream p-2 logo-shadow border border-blush/40 flex items-center justify-center relative">
+                <!-- Intenta cargar image_720616.png si está en la misma carpeta; si no, muestra el Emblema Vectorial Fiel al Logo -->
+                <img src="image_720616.png" alt="Logo Enamórate Repostería Artesanal" 
+                     class="w-full h-full object-contain rounded-full hidden"
+                     onload="this.classList.remove('hidden'); document.getElementById('svg-logo-replica').classList.add('hidden');"
+                     onerror="this.classList.add('hidden'); document.getElementById('svg-logo-replica').classList.remove('hidden');">
+
+                <!-- Réplica Vectorial Fiel del Logo 'Enamórate Repostería Artesanal' -->
+                <svg id="svg-logo-replica" viewBox="0 0 400 400" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Fondo crema suave circular -->
+                    <circle cx="200" cy="200" r="195" fill="#FDFBF7"/>
+                    <!-- Doble anillo rosa pastel exterior -->
+                    <circle cx="200" cy="200" r="188" fill="none" stroke="#F4A2B8" stroke-width="3.5"/>
+                    <circle cx="200" cy="200" r="181" fill="none" stroke="#F4A2B8" stroke-width="1.8"/>
+
+                    <!-- Corazón Superior con Arabescos en Vino Tinto -->
+                    <path d="M 75 135 C 105 110, 150 135, 200 135 C 145 100, 150 48, 200 78 C 250 48, 255 100, 200 135 C 250 135, 295 110, 325 135" 
+                          fill="none" stroke="#7B112C" stroke-width="5" stroke-linecap="round"/>
+                    <!-- Trazo más grueso en los arcos del corazón -->
+                    <path d="M 200 133 C 148 98, 152 50, 200 79 C 248 50, 252 98, 200 133 Z" 
+                          fill="none" stroke="#7B112C" stroke-width="7.5" stroke-linejoin="round"/>
+                    <!-- Corazón Rosa Interno -->
+                    <path d="M 200 118 C 184 102, 182 86, 200 96 C 218 86, 216 102, 200 118 Z" fill="#F4A2B8"/>
+
+                    <!-- Texto Principal: Enamórate -->
+                    <text x="200" y="192" text-anchor="middle" fill="#7B112C" font-family="'Great Vibes', cursive" font-size="76" font-weight="400">Enamórate</text>
+
+                    <!-- Subtítulo: REPOSTERÍA ARTESANAL con líneas verde oliva -->
+                    <line x1="48" y1="215" x2="82" y2="215" stroke="#6B7048" stroke-width="2"/>
+                    <text x="200" y="220" text-anchor="middle" fill="#6B7048" font-family="'Plus Jakarta Sans', sans-serif" font-size="13.5" font-weight="600" letter-spacing="3.5">REPOSTERÍA ARTESANAL</text>
+                    <line x1="318" y1="215" x2="352" y2="215" stroke="#6B7048" stroke-width="2"/>
+
+                    <!-- Separador con pequeño corazón rosa -->
+                    <line x1="95" y1="236" x2="182" y2="236" stroke="#F4A2B8" stroke-width="2"/>
+                    <path d="M 200 243 C 192 235, 191 227, 200 232 C 209 227, 208 235, 200 243 Z" fill="#E57F9B"/>
+                    <line x1="218" y1="236" x2="305" y2="236" stroke="#F4A2B8" stroke-width="2"/>
+
+                    <!-- Ícono WhatsApp y Teléfono -->
+                    <g transform="translate(102, 250)">
+                        <circle cx="16" cy="16" r="15" fill="none" stroke="#6B7048" stroke-width="2.5"/>
+                        <path d="M 8 24 L 10 18 A 7 7 0 1 1 16 23 L 8 24 Z" fill="#6B7048"/>
+                        <path d="M 13.5 13 C 13 15, 15 17.5, 17.5 18.5" stroke="#FDFBF7" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    </g>
+                    <text x="222" y="273" text-anchor="middle" fill="#7B112C" font-family="'Plus Jakarta Sans', sans-serif" font-size="23" font-weight="700" letter-spacing="1">310 352 2093</text>
+
+                    <!-- Eslogan: Hechos con amor -->
+                    <text x="200" y="308" text-anchor="middle" fill="#7B112C" font-family="'Great Vibes', cursive" font-size="35">Hechos con amor</text>
+                    <path d="M 135 318 Q 200 305 265 318" fill="none" stroke="#F4A2B8" stroke-width="1.8"/>
+
+                    <!-- Batidor de Mano y Hojas en la Base -->
+                    <g transform="translate(200, 348)">
+                        <!-- Ramita Izquierda -->
+                        <path d="M -18 12 Q -32 2 -48 8" fill="none" stroke="#6B7048" stroke-width="2"/>
+                        <ellipse cx="-32" cy="8" rx="9" ry="4.5" transform="rotate(-18 -32 8)" fill="#6B7048"/>
+                        <ellipse cx="-38" cy="-4" rx="8" ry="4" transform="rotate(25 -38 -4)" fill="#6B7048"/>
+                        <ellipse cx="-52" cy="-2" rx="9" ry="5" transform="rotate(-25 -52 -2)" fill="#F4A2B8"/>
+                        <!-- Ramita Derecha -->
+                        <path d="M 18 12 Q 32 2 48 8" fill="none" stroke="#6B7048" stroke-width="2"/>
+                        <ellipse cx="32" cy="8" rx="9" ry="4.5" transform="rotate(18 32 8)" fill="#6B7048"/>
+                        <ellipse cx="38" cy="-4" rx="8" ry="4" transform="rotate(-25 38 -4)" fill="#6B7048"/>
+                        <ellipse cx="52" cy="-2" rx="9" ry="5" transform="rotate(25 52 -2)" fill="#F4A2B8"/>
+                        <!-- Batidor (Whisk) inclinado -->
+                        <g transform="rotate(15)">
+                            <!-- Mango -->
+                            <rect x="-4" y="0" width="8" height="22" rx="4" fill="#7B112C"/>
+                            <circle cx="0" cy="14" r="2" fill="#F4A2B8"/>
+                            <!-- Alambres del batidor -->
+                            <ellipse cx="0" cy="-16" rx="9" ry="16" fill="none" stroke="#7B112C" stroke-width="2"/>
+                            <ellipse cx="0" cy="-16" rx="5" ry="16" fill="none" stroke="#7B112C" stroke-width="1.8"/>
+                            <line x1="0" y1="-32" x2="0" y2="0" stroke="#7B112C" stroke-width="1.8"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Subtítulo basado en su eslogan -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-light border border-blush/50 text-burgundy mb-4">
+                <i class="ph-fill ph-heart text-blush-dark text-sm"></i>
+                <span class="font-script text-2xl leading-none pt-1">Hechos con amor</span>
+                <i class="ph-fill ph-heart text-blush-dark text-sm"></i>
+            </div>
+
+            <!-- Título Principal con mensaje espiritual y acogedor -->
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl text-burgundy font-semibold leading-tight max-w-3xl mx-auto mb-6">
+                Endulzamos tus momentos especiales, creados con amor y la bendición de Dios.
+            </h1>
+
+            <p class="text-stone-600 text-base sm:text-lg max-w-xl mx-auto mb-9 font-light leading-relaxed">
+                Cada pastel y postre sale de nuestro horno artesanal cuidando cada ingrediente, para llevar a tu mesa dulzura, gratitud y alegría familiar.
+            </p>
+
+            <!-- Botón Principal CTA -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#catalogo" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-burgundy hover:bg-burgundy-light text-cream font-medium px-8 py-4 rounded-full shadow-lg shadow-burgundy/20 transition transform hover:-translate-y-0.5">
+                    <span>Ver Catálogo de Pasteles</span>
+                    <i class="ph-bold ph-arrow-down text-lg"></i>
+                </a>
+                <a href="#contacto" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-blush-light/60 text-burgundy border border-blush font-medium px-7 py-4 rounded-full transition">
+                    <i class="ph ph-chat-heart text-lg"></i>
+                    <span>Pedido Personalizado</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR DELICADO -->
+    <div class="max-w-xs mx-auto flex items-center justify-center gap-4 py-4">
+        <div class="h-px bg-blush/60 flex-1"></div>
+        <i class="ph-fill ph-flower-lotus text-blush-dark text-xl"></i>
+        <div class="h-px bg-blush/60 flex-1"></div>
+    </div>
+
+    <!-- 2. SECCIÓN DE CATÁLOGO (MINIMALISTA) -->
+    <section id="catalogo" class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="text-xs uppercase tracking-[0.25em] text-olive font-semibold block mb-2">Nuestra Repostería</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-bold mb-3">Catálogo de Pasteles y Postres</h2>
+            <p class="text-stone-600 max-w-lg mx-auto text-sm sm:text-base font-light">
+                Selecciona el pastel ideal para tu celebración. Todos nuestros productos se hornean frescos bajo pedido.
+            </p>
+        </div>
+
+        <!-- Filtros Sencillos -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="catalog-filters">
+            <button onclick="filterCakes('todos')" data-filter="todos" class="filter-btn active-filter px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-burgundy text-cream shadow-sm">
+                Todos
+            </button>
+            <button onclick="filterCakes('especiales')" data-filter="especiales" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-cream-soft text-stone-700 hover:bg-blush-light border border-blush/40">
+                Pasteles Especiales
+            </button>
+            <button onclick="filterCakes('cumpleanos')" data-filter="cumpleanos" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-cream-soft text-stone-700 hover:bg-blush-light border border-blush/40">
+                Cumpleaños
+            </button>
+            <button onclick="filterCakes('postres')" data-filter="postres" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-cream-soft text-stone-700 hover:bg-blush-light border border-blush/40">
+                Postres & Mini Cakes
+            </button>
+        </div>
+
+        <!-- Cuadrícula (Grid) de Productos -->
+        <div id="cakes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Renderizado dinámicamente mediante JS para mantener código limpio -->
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN DE 'CÓMO PEDIR' (SENCILLA) -->
+    <section id="como-pedir" class="py-16 bg-cream-soft border-y border-blush/30 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="font-script text-3xl text-burgundy block mb-1">Fácil y rápido</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-bold">¿Cómo hacer tu pedido?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Paso 1 -->
+                <div class="bg-cream p-8 rounded-3xl border border-blush/40 text-center relative shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-blush-light text-burgundy flex items-center justify-center text-2xl font-serif font-bold border border-blush">
+                        1
+                    </div>
+                    <div class="text-burgundy mb-3">
+                        <i class="ph-duotone ph-cake text-4xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-burgundy mb-2">1. Elige tu pastel favorito</h3>
+                    <p class="text-stone-600 text-sm font-light leading-relaxed">
+                        Explora nuestro catálogo artesanal y escoge el sabor y tamaño que más te enamore para tu ocasión especial.
+                    </p>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-cream p-8 rounded-3xl border border-blush/40 text-center relative shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-blush-light text-burgundy flex items-center justify-center text-2xl font-serif font-bold border border-blush">
+                        2
+                    </div>
+                    <div class="text-olive mb-3">
+                        <i class="ph-duotone ph-whatsapp-logo text-4xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-burgundy mb-2">2. Haz clic para contactarnos</h3>
+                    <p class="text-stone-600 text-sm font-light leading-relaxed">
+                        Presiona en "Pedir este pastel" para enviarnos un mensaje directo por WhatsApp y coordinar la fecha y dedicatoria.
+                    </p>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-cream p-8 rounded-3xl border border-blush/40 text-center relative shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-blush-light text-burgundy flex items-center justify-center text-2xl font-serif font-bold border border-blush">
+                        3
+                    </div>
+                    <div class="text-burgundy mb-3">
+                        <i class="ph-duotone ph-hand-heart text-4xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-burgundy mb-2">3. Recibe una dulce bendición en tu hogar</h3>
+                    <p class="text-stone-600 text-sm font-light leading-relaxed">
+                        Horneamos tu pedido fresco, con amor y dedicación, listo para compartir en familia y celebrar la vida.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN DE CONTACTO DIRECTO -->
+    <section id="contacto" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl p-8 sm:p-12 border border-blush/50 logo-shadow relative overflow-hidden">
+            <!-- Decoración floral sutil en la esquina -->
+            <div class="absolute -bottom-12 -right-12 w-44 h-44 bg-blush-light rounded-full opacity-50 pointer-events-none"></div>
+
+            <div class="text-center max-w-2xl mx-auto relative z-10">
+                <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-olive font-semibold mb-2">
+                    <i class="ph-fill ph-sparkle"></i> Atención Personalizada
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-burgundy font-bold mb-3">
+                    ¿Listo para endulzar tu celebración?
+                </h2>
+                <p class="text-stone-600 text-sm sm:text-base font-light mb-6">
+                    Escríbenos directamente a nuestro WhatsApp. Estaremos felices de asesorarte con tu pastel, sabores especiales o mesas de postres.
+                </p>
+
+                <!-- Número Destacado -->
+                <div class="inline-flex items-center gap-3 bg-cream-soft px-6 py-3 rounded-2xl border border-blush/40 mb-8">
+                    <span class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center text-xl">
+                        <i class="ph-fill ph-whatsapp-logo"></i>
+                    </span>
+                    <div class="text-left">
+                        <span class="text-[11px] uppercase tracking-wider text-stone-500 block">Línea Directa WhatsApp</span>
+                        <a href="https://wa.me/573103522093" target="_blank" rel="noopener noreferrer" class="text-xl sm:text-2xl font-bold text-burgundy hover:underline">
+                            310 352 2093
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mini Formulario Rápido para armar el pedido a WhatsApp -->
+                <form onsubmit="sendCustomWhatsApp(event)" class="text-left bg-cream/70 p-6 rounded-2xl border border-blush/30 mb-8 space-y-4">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-burgundy text-center mb-2">
+                        O personaliza tu mensaje rápido aquí (Opcional)
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-1">Tu Nombre</label>
+                            <input type="text" id="cust-name" placeholder="Ej. María Fernanda" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/50 text-sm focus:outline-none focus:border-burgundy">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-1">Pastel de interés</label>
+                            <select id="cust-cake" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/50 text-sm focus:outline-none focus:border-burgundy">
+                                <option value="Pastel Red Velvet Celestial">Pastel Red Velvet Celestial</option>
+                                <option value="Torta de Tres Leches Artesanal">Torta de Tres Leches Artesanal</option>
+                                <option value="Pastel de Chocolate & Frutos Rojos">Pastel de Chocolate & Frutos Rojos</option>
+                                <option value="Torta de Vainilla, Nuez y Arequipe">Torta de Vainilla, Nuez y Arequipe</option>
+                                <option value="Cheesecake de Frutos Rojos o Maracuyá">Cheesecake de Frutos Rojos o Maracuyá</option>
+                                <option value="Mini Cake Personalizado (Bento Cake)">Mini Cake Personalizado (Bento Cake)</option>
+                                <option value="Pastel Personalizado Especial">Otro / Pastel Personalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-1">Fecha para la que lo deseas</label>
+                            <input type="date" id="cust-date" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/50 text-sm focus:outline-none focus:border-burgundy">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-1">Dedicatoria o detalle especial</label>
+                            <input type="text" id="cust-note" placeholder="Ej. ¡Feliz Cumpleaños Mamá!" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/50 text-sm focus:outline-none focus:border-burgundy">
+                        </div>
+                    </div>
+                    <div class="text-center pt-2">
+                        <button type="submit" 
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-olive hover:bg-olive-dark text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                            <span>Haz tu pedido por WhatsApp aquí</span>
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-xs text-stone-500 italic">
+                    Respuesta rápida • Atención cálida y familiar • Envíos seguros a domicilio
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PIE DE PÁGINA (FOOTER) -->
+    <footer class="bg-cream-soft border-t border-blush/40 pt-14 pb-10 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <!-- Logo Pequeño -->
+            <div class="inline-flex flex-col items-center mb-5">
+                <div class="w-16 h-16 rounded-full bg-cream border-2 border-blush flex items-center justify-center shadow-sm mb-2">
+                    <svg viewBox="0 0 100 100" class="w-12 h-12">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#F4A2B8" stroke-width="2"/>
+                        <path d="M50 32 C35 12, 15 30, 50 56 C85 30, 65 12, 50 32 Z" fill="none" stroke="#7B112C" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M50 38 C43 28, 33 36, 50 49 C67 36, 57 28, 50 38 Z" fill="#F4A2B8"/>
+                        <path d="M46 82 L54 68 M50 84 L50 65" stroke="#7B112C" stroke-width="3" stroke-linecap="round"/>
+                        <ellipse cx="50" cy="64" rx="5" ry="9" fill="none" stroke="#7B112C" stroke-width="2.2"/>
+                    </svg>
+                </div>
+                <span class="font-script text-4xl text-burgundy">Enamórate</span>
+                <span class="text-[11px] uppercase tracking-[0.25em] text-olive font-semibold">Repostería Artesanal</span>
+            </div>
+
+            <!-- Mensaje Final Cálido y Espiritual -->
+            <blockquote class="font-serif italic text-xl sm:text-2xl text-burgundy max-w-xl mx-auto mb-6 leading-relaxed">
+                "Gracias por apoyar nuestro emprendimiento. Que Dios bendiga tu vida y la de tu familia."
+            </blockquote>
+
+            <!-- Enlaces Básicos a Redes Sociales -->
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <a href="https://wa.me/573103522093" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                   class="w-11 h-11 rounded-full bg-cream border border-blush hover:bg-burgundy hover:text-white text-burgundy flex items-center justify-center transition shadow-sm">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                </a>
+                <a href="#contacto" aria-label="Instagram"
+                   class="w-11 h-11 rounded-full bg-cream border border-blush hover:bg-burgundy hover:text-white text-burgundy flex items-center justify-center transition shadow-sm">
+                    <i class="ph-fill ph-instagram-logo text-xl"></i>
+                </a>
+                <a href="#contacto" aria-label="Facebook"
+                   class="w-11 h-11 rounded-full bg-cream border border-blush hover:bg-burgundy hover:text-white text-burgundy flex items-center justify-center transition shadow-sm">
+                    <i class="ph-fill ph-facebook-logo text-xl"></i>
+                </a>
+            </div>
+
+            <div class="text-xs text-stone-500 border-t border-blush/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <span>© 2026 Enamórate Repostería Artesanal. Hechos con amor.</span>
+                <span>WhatsApp Pedidos: <strong>310 352 2093</strong></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/573103522093?text=Hola%20Enam%C3%B3rate%20Reposter%C3%ADa%20Artesanal%20%F0%9F%92%95%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido."
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Pedir por WhatsApp"
+       class="fixed bottom-5 right-5 z-40 bg-olive hover:bg-olive-dark text-white p-4 rounded-full shadow-xl flex items-center gap-2 transition transform hover:scale-105">
+        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        <span class="hidden sm:inline text-sm font-medium pr-1">¿Te ayudamos con tu pastel?</span>
+    </a>
+
+    <!-- MODAL RÁPIDO PARA CONFIRMAR PEDIDO DE UN PASTEL -->
+    <div id="order-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden items-center justify-center p-4">
+        <div class="bg-cream rounded-3xl max-w-md w-full p-6 sm:p-8 border border-blush shadow-2xl modal-enter relative">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-blush-light text-burgundy flex items-center justify-center hover:bg-blush transition">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="text-center mb-5">
+                <span class="font-script text-3xl text-burgundy block">Hechos con amor</span>
+                <h3 id="modal-cake-name" class="font-serif text-2xl font-bold text-burgundy">Nombre del Pastel</h3>
+                <p id="modal-cake-price" class="text-sm text-olive font-semibold mt-0.5"></p>
+            </div>
+
+            <form onsubmit="confirmModalOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1">Tamaño / Porciones</label>
+                    <select id="modal-size" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/60 text-sm focus:outline-none focus:border-burgundy">
+                        <option value="Pequeño (8 a 10 porciones)">Pequeño (8 a 10 porciones)</option>
+                        <option value="Mediano (15 a 20 porciones)">Mediano (15 a 20 porciones)</option>
+                        <option value="Grande (25 a 30 porciones)">Grande (25 a 30 porciones)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1">Dedicatoria en el pastel (Opcional)</label>
+                    <input type="text" id="modal-dedication" placeholder="Ej. Dios te bendiga en tu día" 
+                           class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/60 text-sm focus:outline-none focus:border-burgundy">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1">Fecha deseada de entrega</label>
+                    <input type="date" id="modal-date" 
+                           class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-blush/60 text-sm focus:outline-none focus:border-burgundy">
+                </div>
+
+                <button type="submit" 
+                        class="w-full inline-flex items-center justify-center gap-2 bg-burgundy hover:bg-burgundy-light text-white font-medium py-3.5 px-6 rounded-full shadow-md transition">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                    <span>Enviar Pedido por WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: CATÁLOGO Y PEDIDOS POR WHATSAPP -->
+    <script>
+        const WHATSAPP_NUMBER = "573103522093";
+
+        // Datos del Catálogo de Pasteles
+        const cakesCatalog = [
+            {
+                id: 1,
+                name: "Pastel Red Velvet Celestial",
+                category: "especiales",
+                price: "Desde $65.000 COP",
+                badge: "Favorito",
+                image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Bizcocho húmedo de terciopelo rojo con un toque de cacao artesanal, relleno y cubierto con suave frosting de queso crema y frutos rojos."
+            },
+            {
+                id: 2,
+                name: "Torta de Tres Leches Artesanal",
+                category: "cumpleanos",
+                price: "Desde $58.000 COP",
+                badge: "Tradicional",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Esponjoso bizcocho de vainilla bañado en nuestra mezcla secreta de tres leches, coronado con chantilly fresca, canela y fresas."
+            },
+            {
+                id: 3,
+                name: "Pastel de Chocolate & Frutos Rojos",
+                category: "cumpleanos",
+                price: "Desde $68.000 COP",
+                badge: "Hecho con amor",
+                image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Capas intensas de chocolate semi-amargo, ganache artesanal cremosa y reducción casera de fresas, moras y arándanos frescos."
+            },
+            {
+                id: 4,
+                name: "Torta de Vainilla, Nuez y Arequipe",
+                category: "especiales",
+                price: "Desde $60.000 COP",
+                badge: "Clásico Familiar",
+                image: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Miga suave con esencia natural de vainilla, doble relleno de arequipe de antaño, trozos de nuez tostada y decoración floral en crema."
+            },
+            {
+                id: 5,
+                name: "Cheesecake de Frutos Rojos o Maracuyá",
+                category: "postres",
+                price: "Desde $52.000 COP",
+                badge: "Postre Especial",
+                image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Base crocante de galleta con mantequilla, crema suave de queso horneada lentamente y cubierta con pulpa brillante de fruta natural."
+            },
+            {
+                id: 6,
+                name: "Mini Cake Personalizado (Bento Cake)",
+                category: "postres",
+                price: "Desde $35.000 COP",
+                badge: "Detalle Único",
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80",
+                ingredients: "Ideal para regalar una bendición a alguien especial (2 a 4 porciones). Elige vainilla o chocolate con un mensaje corto escrito a mano."
+            }
+        ];
+
+        let selectedCakeForModal = null;
+
+        // Función para renderizar las tarjetas del catálogo
+        function renderCatalog(filter = 'todos') {
+            const grid = document.getElementById('cakes-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'todos' 
+                ? cakesCatalog 
+                : cakesCatalog.filter(cake => cake.category === filter);
+
+            filtered.forEach(cake => {
+                const card = document.createElement('article');
+                card.className = "bg-white rounded-3xl overflow-hidden border border-blush/40 flex flex-col justify-between card-hover";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-60 overflow-hidden bg-cream-soft">
+                            <img src="${cake.image}" 
+                                 alt="${cake.name}" 
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105"
+                                 onerror="this.src='https://placehold.co/600x450/FCEEF2/7B112C?text=Enam%C3%B3rate+Pasteler%C3%ADa'">
+                            <span class="absolute top-3 left-3 bg-cream/95 backdrop-blur-xs text-burgundy text-xs font-semibold px-3 py-1 rounded-full border border-blush/50 shadow-xs">
+                                ${cake.badge}
+                            </span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-baseline justify-between gap-2 mb-2">
+                                <h3 class="font-serif text-2xl font-bold text-burgundy leading-snug">${cake.name}</h3>
+                            </div>
+                            <p class="text-xs font-semibold text-olive uppercase tracking-wider mb-3">${cake.price}</p>
+                            <p class="text-stone-600 text-sm font-light leading-relaxed">
+                                ${cake.ingredients}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <button onclick="openOrderModal(${cake.id})" 
+                                class="w-full inline-flex items-center justify-center gap-2 bg-burgundy hover:bg-burgundy-light text-cream font-medium text-sm py-3.5 px-5 rounded-full shadow-sm transition">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Pedir este pastel</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filtrado de categorías
+        function filterCakes(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = "filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-burgundy text-cream shadow-sm";
+                } else {
+                    btn.className = "filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition bg-cream-soft text-stone-700 hover:bg-blush-light border border-blush/40";
+                }
+            });
+            renderCatalog(category);
+        }
+
+        // Abrir Modal para personalizar el pastel elegido antes de ir a WhatsApp
+        function openOrderModal(cakeId) {
+            selectedCakeForModal = cakesCatalog.find(c => c.id === cakeId);
+            if (!selectedCakeForModal) return;
+
+            document.getElementById('modal-cake-name').textContent = selectedCakeForModal.name;
+            document.getElementById('modal-cake-price').textContent = selectedCakeForModal.price;
+            
+            const modal = document.getElementById('order-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('order-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Confirmar pedido desde el Modal y redirigir a WhatsApp
+        function confirmModalOrder(event) {
+            event.preventDefault();
+            if (!selectedCakeForModal) return;
+
+            const size = document.getElementById('modal-size').value;
+            const dedication = document.getElementById('modal-dedication').value.trim();
+            const date = document.getElementById('modal-date').value;
+
+            let message = `¡Hola Enamórate Repostería Artesanal! 💕 Bendiciones.\n\nMe gustaría pedir este pastel:\n🍰 *Pastel:* ${selectedCakeForModal.name}\n📏 *Tamaño:* ${size}`;
+            if (date) message += `\n📅 *Fecha deseada:* ${date}`;
+            if (dedication) message += `\n✨ *Dedicatoria:* "${dedication}"`;
+            message += `\n\nQuedo atento(a) para confirmar disponibilidad y pago. ¡Muchas gracias!`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            closeOrderModal();
+        }
+
+        // Enviar pedido desde el formulario de la sección de contacto
+        function sendCustomWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('cust-name').value.trim();
+            const cake = document.getElementById('cust-cake').value;
+            const date = document.getElementById('cust-date').value;
+            const note = document.getElementById('cust-note').value.trim();
+
+            let message = `¡Hola Enamórate Repostería Artesanal! 💕 Bendiciones.\n\nQuisiera realizar un pedido:`;
+            if (name) message += `\n👤 *Nombre:* ${name}`;
+            message += `\n🎂 *Pastel:* ${cake}`;
+            if (date) message += `\n📅 *Fecha:* ${date}`;
+            if (note) message += `\n💌 *Dedicatoria / Detalle:* ${note}`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Inicializar catálogo al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatalog('todos');
+        });
+    </script>
+</body>
+</html>
